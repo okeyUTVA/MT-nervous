@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedTerm Test #704 Review | Strand 7: The Nervous System</title>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================================================
+           DESIGN TOKENS & SELF-CONTAINED CLINICAL STYLING (ZERO EXTERNAL CSS LIBS)
+        ========================================================================= */
+        :root {
+            --bg-page: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-subtle: #f1f5f9;
+            --navy-950: #0a1026;
+            --navy-900: #111827;
+            --navy-800: #1e293b;
+            --indigo-700: #4338ca;
+            --indigo-600: #4f46e5;
+            --indigo-200: #c7d2fe;
+            --indigo-100: #e0e7ff;
+            --indigo-50: #eef2ff;
+            --violet-700: #6d28d9;
+            --violet-100: #ede9fe;
+            --violet-50: #f5f3ff;
+            --teal-700: #0f766e;
+            --teal-600: #0d9488;
+            --teal-100: #ccfbf1;
+            --teal-50: #f0fdfa;
+            --emerald-700: #047857;
+            --emerald-600: #059669;
+            --emerald-100: #d1fae5;
+            --emerald-50: #ecfdf5;
+            --amber-800: #92400e;
+            --amber-600: #d97706;
+            --amber-200: #fde68a;
+            --amber-100: #fef3c7;
+            --amber-50: #fffbeb;
+            --rose-700: #be123c;
+            --rose-600: #e11d48;
+            --rose-100: #ffe4e6;
+            --rose-50: #fff1f2;
+            --slate-900: #0f172a;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-500: #64748b;
+            --slate-400: #94a3b8;
+            --slate-300: #cbd5e1;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-page);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--navy-950) 0%, #171c3a 100%);
+            color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .container {
+            max-width: 80rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        .header-inner {
+            padding-top: 1rem;
+            padding-bottom: 0.875rem;
+        }
+
+        .header-top {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .header-top {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+        }
+
+        .brand-icon {
+            width: 2.85rem;
+            height: 2.85rem;
+            border-radius: var(--radius-md);
+            background: rgba(79, 70, 229, 0.25);
+            border: 1px solid rgba(165, 180, 252, 0.4);
+            color: #c7d2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cte-badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            background-color: var(--indigo-600);
+            color: #ffffff;
+        }
+
+        .cut-score-text {
+            font-size: 0.75rem;
+            color: var(--slate-300);
+            font-weight: 500;
+        }
+
+        h1.site-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-top: 0.15rem;
+        }
+
+        @media (min-width: 640px) {
+            h1.site-title { font-size: 1.375rem; }
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .mastery-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(165, 180, 252, 0.25);
+            border-radius: var(--radius-md);
+            padding: 0.45rem 0.9rem;
+        }
+
+        .mastery-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--slate-400);
+            font-weight: 700;
+        }
+
+        .mastery-value {
+            font-size: 0.875rem;
+            font-weight: 800;
+            color: #c7d2fe;
+        }
+
+        .mastery-medal {
+            width: 2.1rem;
+            height: 2.1rem;
+            border-radius: 9999px;
+            background: var(--navy-950);
+            color: #fbbf24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-reset-btn {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: var(--slate-300);
+            border-radius: var(--radius-md);
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: inherit;
+        }
+        .header-reset-btn:hover {
+            background: rgba(225, 29, 72, 0.22);
+            border-color: rgba(251, 113, 133, 0.45);
+            color: #ffffff;
+        }
+
+        /* Nav Tabs */
+        nav.tabs-nav {
+            display: flex;
+            overflow-x: auto;
+            gap: 0.4rem;
+            margin-top: 0.9rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            scrollbar-width: none;
+        }
+        nav.tabs-nav::-webkit-scrollbar { display: none; }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 0.95rem;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            background: transparent;
+            color: var(--slate-300);
+            transition: all 0.18s ease;
+            font-family: inherit;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .nav-btn.active {
+            background-color: var(--indigo-600);
+            color: #ffffff;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Main Layout */
+        main {
+            flex: 1;
+            padding-top: 1.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        .card-panel {
+            background: var(--bg-surface);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            padding: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .card-panel { padding: 1.5rem; }
+        }
+
+        .panel-header {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 1024px) {
+            .panel-header {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        h2.section-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--navy-900);
+        }
+
+        p.section-sub {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+            margin-top: 0.15rem;
+        }
+
+        /* Buttons & Inputs */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            padding: 0.6rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: 1px solid transparent;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--indigo-600);
+            color: #ffffff;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-primary:hover { background-color: var(--indigo-700); }
+
+        .btn-navy {
+            background-color: var(--navy-900);
+            color: #ffffff;
+        }
+        .btn-navy:hover { background-color: var(--navy-800); }
+
+        .btn-emerald {
+            background-color: var(--emerald-600);
+            color: #ffffff;
+        }
+        .btn-emerald:hover { background-color: var(--emerald-700); }
+
+        .btn-amber {
+            background-color: var(--amber-50);
+            border-color: var(--amber-200);
+            color: var(--amber-800);
+        }
+        .btn-amber:hover { background-color: var(--amber-100); }
+
+        .btn-outline {
+            background-color: var(--bg-surface);
+            border-color: var(--slate-300);
+            color: var(--slate-700);
+        }
+        .btn-outline:hover { background-color: var(--slate-100); }
+
+        .btn-outline.active-toggle {
+            background-color: var(--indigo-50);
+            border-color: var(--indigo-600);
+            color: var(--indigo-700);
+        }
+
+        .search-filter-bar {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--slate-100);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .search-filter-bar {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .search-wrap {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-wrap svg {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--slate-400);
+            pointer-events: none;
+        }
+
+        input.search-input, select.select-input {
+            width: 100%;
+            padding: 0.6rem 0.9rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--slate-300);
+            font-size: 0.875rem;
+            font-family: inherit;
+            color: var(--slate-900);
+            background-color: #ffffff;
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        input.search-input { padding-left: 2.35rem; }
+        select.select-input { width: auto; font-weight: 600; cursor: pointer; }
+
+        input.search-input:focus, select.select-input:focus {
+            border-color: var(--indigo-600);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
+        }
+
+        .filter-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
+
+        .pill-btn {
+            padding: 0.45rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            background-color: var(--slate-100);
+            color: var(--slate-700);
+            transition: all 0.15s;
+            font-family: inherit;
+        }
+
+        .pill-btn:hover { background-color: var(--slate-200); }
+        .pill-btn.active {
+            background-color: var(--navy-900);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* =========================================================================
+           TAB 1: STUDY GUIDE GRID
+        ========================================================================= */
+        .study-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .study-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .study-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .term-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-lg);
+            padding: 1.15rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .term-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .term-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .std-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.18rem 0.55rem;
+            border-radius: 0.375rem;
+            border: 1px solid transparent;
+        }
+
+        .tag-s1 { background: var(--indigo-50); color: var(--indigo-700); border-color: var(--indigo-200); }
+        .tag-s2 { background: var(--violet-50); color: var(--violet-700); border-color: #ddd6fe; }
+        .tag-s3 { background: var(--teal-50); color: var(--teal-700); border-color: var(--teal-100); }
+        .tag-s4 { background: var(--amber-50); color: var(--amber-800); border-color: var(--amber-200); }
+        .tag-s5 { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+
+        .mastery-check-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--slate-300);
+            padding: 0.2rem;
+            display: flex;
+            align-items: center;
+            transition: color 0.15s;
+        }
+        .mastery-check-btn:hover { color: var(--slate-400); }
+        .mastery-check-btn.is-mastered { color: var(--emerald-600); }
+
+        .term-title {
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: var(--navy-900);
+        }
+
+        .term-def-box {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--slate-100);
+        }
+
+        .term-def-box.blurred-mode { cursor: pointer; }
+
+        .term-def-text {
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            font-weight: 500;
+            transition: filter 0.2s ease;
+        }
+
+        .term-def-text.is-blurred {
+            filter: blur(5px);
+            user-select: none;
+        }
+
+        .peek-hint {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--indigo-600);
+            margin-top: 0.25rem;
+        }
+
+        /* =========================================================================
+           TAB 2: 3D FLASHCARDS
+        ========================================================================= */
+        .fc-stage {
+            max-width: 42rem;
+            margin: 1.5rem auto 0;
+        }
+
+        .fc-meta-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--slate-600);
+            margin-bottom: 0.55rem;
+            padding: 0 0.25rem;
+        }
+
+        .fc-progress-track {
+            width: 100%;
+            height: 0.45rem;
+            background-color: var(--slate-200);
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .fc-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--indigo-600), var(--teal-600));
+            transition: width 0.25s ease;
+        }
+
+        .status-badge {
+            padding: 0.2rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .status-learning { background: var(--amber-100); color: var(--amber-800); }
+        .status-mastered { background: var(--emerald-100); color: var(--emerald-700); }
+
+        .fc-perspective {
+            perspective: 1100px;
+            width: 100%;
+            height: 21rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @media (min-width: 640px) {
+            .fc-perspective { height: 23rem; }
+        }
+
+        .fc-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+        }
+
+        .fc-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .fc-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .fc-front {
+            background: #ffffff;
+            border: 2px solid var(--slate-200);
+            box-shadow: var(--shadow-md);
+        }
+
+        .fc-back {
+            background: linear-gradient(145deg, var(--navy-950), #171c3a);
+            color: #ffffff;
+            border: 2px solid rgba(99, 102, 241, 0.45);
+            box-shadow: var(--shadow-lg);
+            transform: rotateY(180deg);
+        }
+
+        .fc-main-term {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy-900);
+            letter-spacing: -0.02em;
+        }
+
+        @media (min-width: 640px) {
+            .fc-main-term { font-size: 2.5rem; }
+        }
+
+        .fc-main-def {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.35;
+        }
+
+        @media (min-width: 640px) {
+            .fc-main-def { font-size: 1.7rem; }
+        }
+
+        .fc-controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.65rem;
+            margin-top: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .fc-controls { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        .kbd-hint {
+            display: inline-block;
+            padding: 0.1rem 0.4rem;
+            background: var(--slate-100);
+            border: 1px solid var(--slate-300);
+            border-radius: 0.25rem;
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--slate-700);
+        }
+
+        /* =========================================================================
+           TAB 3: WORD-BUILDING LAB
+        ========================================================================= */
+        .wb-prompt-box {
+            margin: 1.5rem 0;
+            background: linear-gradient(135deg, var(--navy-950), #171c3a);
+            color: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 1.75rem 1.25rem;
+            text-align: center;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .wb-tray {
+            min-height: 4.25rem;
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            background-color: var(--slate-100);
+            border: 2px dashed var(--slate-300);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .tray-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.85rem;
+            border-radius: var(--radius-md);
+            background-color: var(--navy-900);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tray-chip button {
+            background: none;
+            border: none;
+            color: var(--slate-400);
+            cursor: pointer;
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+        .tray-chip button:hover { color: #fda4af; }
+
+        .wb-bank-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.65rem;
+        }
+
+        @media (min-width: 640px) {
+            .wb-bank-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 768px) {
+            .wb-bank-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .part-tile {
+            padding: 0.8rem 0.5rem;
+            border-radius: var(--radius-md);
+            background: #ffffff;
+            border: 2px solid var(--slate-200);
+            color: var(--navy-900);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            box-shadow: var(--shadow-sm);
+        }
+        .part-tile:hover {
+            border-color: var(--indigo-600);
+            background-color: var(--indigo-50);
+        }
+
+        .spelling-box {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--slate-200);
+        }
+
+        .spelling-inner {
+            background-color: var(--teal-50);
+            border: 1px solid var(--teal-100);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+        }
+
+        .spelling-options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-top: 0.85rem;
+        }
+
+        @media (min-width: 640px) {
+            .spelling-options-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .spelling-btn {
+            padding: 0.85rem;
+            border-radius: var(--radius-md);
+            background: #ffffff;
+            border: 2px solid var(--teal-600);
+            color: var(--navy-900);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .spelling-btn:hover {
+            background: var(--teal-600);
+            color: #ffffff;
+        }
+
+        /* =========================================================================
+           TAB 4: SPEED MATCHING ARENA
+        ========================================================================= */
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .match-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .match-col-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            margin-top: 0.5rem;
+        }
+
+        .match-tile {
+            width: 100%;
+            text-align: left;
+            padding: 0.95rem 1rem;
+            border-radius: var(--radius-md);
+            background: #ffffff;
+            border: 2px solid var(--slate-200);
+            color: var(--navy-900);
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.15s;
+            font-family: inherit;
+        }
+
+        .match-tile:hover:not(:disabled) {
+            border-color: var(--indigo-600);
+        }
+
+        .match-tile.selected {
+            border-color: var(--indigo-600);
+            background-color: var(--indigo-50);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        .match-tile.matched {
+            background-color: var(--emerald-50);
+            border-color: var(--emerald-600);
+            color: var(--emerald-700);
+            opacity: 0.65;
+            cursor: default;
+        }
+
+        .match-tile.wrong {
+            border-color: var(--rose-600);
+            background-color: var(--rose-100);
+            animation: shake 0.32s ease-in-out;
+        }
+
+        .complete-card {
+            background: #ffffff;
+            border: 2px solid var(--emerald-600);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            max-width: 30rem;
+            margin: 1.5rem auto 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* =========================================================================
+           TAB 5: PRACTICE QUIZ
+        ========================================================================= */
+        .quiz-wrap {
+            max-width: 54rem;
+            margin: 0 auto;
+        }
+
+        .quiz-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        .quiz-item:last-child { border-bottom: none; }
+
+        .quiz-q-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .q-num-badge {
+            width: 1.85rem;
+            height: 1.85rem;
+            border-radius: var(--radius-sm);
+            background: var(--slate-100);
+            color: var(--navy-900);
+            font-weight: 800;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.9rem;
+        }
+
+        .quiz-opt-btn {
+            width: 100%;
+            text-align: left;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-md);
+            background: #ffffff;
+            border: 2px solid var(--slate-200);
+            color: var(--slate-700);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: inherit;
+        }
+
+        .quiz-opt-btn:hover:not(:disabled) {
+            border-color: var(--indigo-600);
+        }
+
+        .quiz-opt-btn.opt-selected {
+            background: var(--indigo-50);
+            border-color: var(--indigo-600);
+            color: var(--navy-900);
+            font-weight: 600;
+        }
+
+        .quiz-opt-btn.opt-correct {
+            background: var(--emerald-50);
+            border-color: var(--emerald-600);
+            color: var(--emerald-700);
+            font-weight: 700;
+        }
+
+        .quiz-opt-btn.opt-wrong {
+            background: var(--rose-50);
+            border-color: var(--rose-600);
+            color: var(--rose-700);
+        }
+
+        .quiz-opt-btn.opt-dim {
+            background: var(--slate-50);
+            border-color: var(--slate-200);
+            color: var(--slate-400);
+        }
+
+        .opt-letter {
+            width: 1.4rem;
+            height: 1.4rem;
+            border-radius: 9999px;
+            border: 1px solid var(--slate-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .opt-selected .opt-letter {
+            background: var(--indigo-600);
+            border-color: var(--indigo-600);
+            color: #ffffff;
+        }
+
+        .rationale-box {
+            margin-top: 0.85rem;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-md);
+            background: var(--slate-100);
+            border: 1px solid var(--slate-200);
+            font-size: 0.8rem;
+            color: var(--slate-700);
+        }
+
+        .feedback-alert {
+            margin-top: 1.25rem;
+            padding: 1rem 1.15rem;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            border: 1px solid transparent;
+        }
+        .alert-info { background: var(--teal-50); border-color: var(--teal-100); color: var(--teal-700); }
+        .alert-error { background: var(--rose-50); border-color: var(--rose-100); color: var(--rose-700); }
+        .alert-success { background: var(--emerald-50); border-color: var(--emerald-100); color: var(--emerald-700); }
+        .alert-warn { background: var(--amber-50); border-color: var(--amber-200); color: var(--amber-800); }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .animate-shake { animation: shake 0.3s ease-in-out; }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--slate-200);
+            padding: 1.25rem 0;
+            margin-top: auto;
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .footer-inner {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Clinical Header -->
+    <header>
+        <div class="container header-inner">
+            <div class="header-top">
+                <div class="brand-group">
+                    <div class="brand-icon" aria-hidden="true">
+                        <!-- Custom Neuron / Brain Synapse SVG Icon -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 3v6"/>
+                            <path d="M12 15v6"/>
+                            <path d="M4.22 6.22l4.24 4.24"/>
+                            <path d="M15.54 13.54l4.24 4.24"/>
+                            <path d="M19.78 6.22l-4.24 4.24"/>
+                            <path d="M8.46 13.54l-4.24 4.24"/>
+                            <circle cx="12" cy="2.5" r="1"/>
+                            <circle cx="12" cy="21.5" r="1"/>
+                            <circle cx="3.8" cy="5.8" r="1"/>
+                            <circle cx="20.2" cy="18.2" r="1"/>
+                            <circle cx="20.2" cy="5.8" r="1"/>
+                            <circle cx="3.8" cy="18.2" r="1"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="badge-row">
+                            <span class="cte-badge">Utah CTE Medical Terminology • Test #704 (74% Cut Score)</span>
+                        </div>
+                        <h1 class="site-title">Strand 7: The Nervous System</h1>
+                    </div>
+                </div>
+
+                <!-- Mastery Progress Pill + Reset -->
+                <div class="header-actions">
+                    <div class="mastery-pill">
+                        <div style="text-align: right;">
+                            <div class="mastery-label">Strand 7 Mastery</div>
+                            <div class="mastery-value"><span id="header-mastered-count">0</span> / <span id="header-total-count">75</span> Terms</div>
+                        </div>
+                        <div class="mastery-medal" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <button onclick="resetMastery()" class="header-reset-btn" title="Clear saved mastery progress">
+                        Reset Progress
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <nav class="tabs-nav" aria-label="Study Modes">
+                <button onclick="switchTab('study')" id="tab-study" class="nav-btn active">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    Study Guide
+                </button>
+                <button onclick="switchTab('flashcards')" id="tab-flashcards" class="nav-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg>
+                    Flashcards
+                </button>
+                <button onclick="switchTab('builder')" id="tab-builder" class="nav-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    Word-Building Lab
+                </button>
+                <button onclick="switchTab('matching')" id="tab-matching" class="nav-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Speed Matching
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="nav-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Practice Exam
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container">
+
+        <!-- ==========================================
+             TAB 1: STUDY GUIDE / REFERENCE
+        =========================================== -->
+        <section id="view-study" class="tab-view">
+            <div class="card-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="section-title">Complete Strand 7 Standards Reference</h2>
+                        <p class="section-sub">All 75 required abbreviations, prefixes, roots/combining forms, suffixes, and clinical terms from the 2026 Utah CTE Standards.</p>
+                    </div>
+                    <div>
+                        <button id="toggle-blur-btn" onclick="toggleSelfTestBlur()" class="btn btn-outline">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                            <span>Hide Definitions (Self-Test)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search & Standard Filter Controls -->
+                <div class="search-filter-bar">
+                    <div class="search-wrap">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="study-search" class="search-input" oninput="renderStudyGuide()" placeholder="Search term, root, abbreviation, or definition...">
+                    </div>
+                    <div class="filter-pills" id="study-filters">
+                        <button onclick="setStudyFilter('ALL')" data-filter="ALL" class="pill-btn active">All (75)</button>
+                        <button onclick="setStudyFilter('Std 1: Abbreviations')" data-filter="Std 1: Abbreviations" class="pill-btn">Std 1: Abbrev (10)</button>
+                        <button onclick="setStudyFilter('Std 2: Prefixes')" data-filter="Std 2: Prefixes" class="pill-btn">Std 2: Prefixes (5)</button>
+                        <button onclick="setStudyFilter('Std 3: Word Roots')" data-filter="Std 3: Word Roots" class="pill-btn">Std 3: Roots (22)</button>
+                        <button onclick="setStudyFilter('Std 4: Suffixes')" data-filter="Std 4: Suffixes" class="pill-btn">Std 4: Suffixes (9)</button>
+                        <button onclick="setStudyFilter('Std 5: Clinical Terms')" data-filter="Std 5: Clinical Terms" class="pill-btn">Std 5: Clinical (29)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Cards Grid -->
+            <div id="study-grid" class="study-grid"></div>
+        </section>
+
+        <!-- ==========================================
+             TAB 2: INTERACTIVE 3D FLASHCARDS
+        =========================================== -->
+        <section id="view-flashcards" class="tab-view hidden">
+            <div class="card-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="section-title">Active Recall 3D Flashcards</h2>
+                        <p class="section-sub">Click card or press <span class="kbd-hint">Space</span> / <span class="kbd-hint">Enter</span> to flip. Use <span class="kbd-hint">←</span> <span class="kbd-hint">→</span> arrows to navigate.</p>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+                        <select id="fc-category-select" class="select-input" onchange="initFlashcardDeck()">
+                            <option value="ALL">All Strand 7 Terms (75)</option>
+                            <option value="STILL_LEARNING">Still Learning Only</option>
+                            <option value="Std 1: Abbreviations">Std 1: Abbreviations (10)</option>
+                            <option value="Std 2: Prefixes">Std 2: Prefixes (5)</option>
+                            <option value="Std 3: Word Roots">Std 3: Word Roots / Combining Forms (22)</option>
+                            <option value="Std 4: Suffixes">Std 4: Suffixes (9)</option>
+                            <option value="Std 5: Clinical Terms">Std 5: Clinical Terms & Procedures (29)</option>
+                        </select>
+                        <button onclick="shuffleFlashcards()" class="btn btn-outline">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                            Shuffle
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flashcard Stage -->
+            <div class="fc-stage">
+                <div class="fc-meta-bar">
+                    <span id="fc-counter">Card 1 of 75</span>
+                    <span id="fc-status-badge" class="status-badge status-learning">Still Learning</span>
+                </div>
+                <div class="fc-progress-track">
+                    <div id="fc-progress-bar" class="fc-progress-fill" style="width: 1.33%;"></div>
+                </div>
+
+                <div class="fc-perspective" onclick="flipFlashcard()">
+                    <div id="fc-inner" class="fc-inner">
+                        <!-- Front Face -->
+                        <div class="fc-face fc-front">
+                            <span id="fc-front-cat" class="std-tag tag-s3">Std 3: Word Roots</span>
+                            <div>
+                                <h3 id="fc-front-text" class="fc-main-term font-mono">neur/o</h3>
+                                <p style="font-size: 0.72rem; color: var(--slate-400); margin-top: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">Click or Press Space to Flip</p>
+                            </div>
+                            <div style="color: var(--slate-300);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Back Face -->
+                        <div class="fc-face fc-back">
+                            <span id="fc-back-term" class="font-mono" style="padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; background: rgba(79, 70, 229, 0.35); color: #c7d2fe; border: 1px solid rgba(165, 180, 252, 0.4);">neur/o</span>
+                            <div>
+                                <p id="fc-back-text" class="fc-main-def">nerve</p>
+                            </div>
+                            <div style="font-size: 0.75rem; color: var(--slate-400);">Strand 7: The Nervous System</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flashcard Controls -->
+                <div class="fc-controls">
+                    <button onclick="prevFlashcard()" class="btn btn-outline" style="padding: 0.85rem;">← Previous</button>
+                    <button onclick="flipFlashcard()" class="btn btn-navy" style="padding: 0.85rem;">Flip Card</button>
+                    <button onclick="markFlashcard(false)" class="btn btn-amber" style="padding: 0.85rem;">Still Learning</button>
+                    <button onclick="markFlashcard(true)" class="btn btn-emerald" style="padding: 0.85rem;">✓ Mastered</button>
+                    <button onclick="nextFlashcard()" class="btn btn-outline" style="padding: 0.85rem;">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 3: WORD-BUILDING LAB
+        =========================================== -->
+        <section id="view-builder" class="tab-view hidden">
+            <div class="card-panel">
+                <div class="panel-header" style="padding-bottom: 1.25rem; border-bottom: 1px solid var(--slate-100);">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="std-tag tag-s1">Strand 1 + Strand 7 Rules</span>
+                            <span style="font-size: 0.78rem; font-weight: 700; color: var(--slate-500);">Challenge <span id="wb-progress">1 / 16</span></span>
+                        </div>
+                        <h2 class="section-title" style="margin-top: 0.3rem;">Nervous System Word-Building Lab</h2>
+                        <p class="section-sub">Select the correct word parts in sequence, then choose the proper final spelling applying Strand 1 combining vowel rules.</p>
+                    </div>
+                    <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 0.6rem 1rem; display: inline-flex; align-items: center; gap: 0.75rem; align-self: flex-start;">
+                        <div>
+                            <div style="font-size: 0.7rem; font-weight: 700; color: var(--slate-500); text-transform: uppercase;">Lab Score</div>
+                            <div style="font-size: 1rem; font-weight: 800; color: var(--navy-900);"><span id="wb-score">0</span> / 16 Solved</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Target Definition Prompt -->
+                <div class="wb-prompt-box">
+                    <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800; margin-bottom: 0.35rem;">Construct the Medical Term For:</div>
+                    <h3 id="wb-target-def" style="font-size: 1.5rem; font-weight: 800;">without speech</h3>
+                    <p id="wb-target-hint" style="font-size: 0.8rem; color: var(--slate-300); margin-top: 0.45rem;">Requires: Prefix + Suffix</p>
+                </div>
+
+                <!-- Selected Parts Assembly Tray -->
+                <div style="margin-bottom: 1.35rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+                        <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500);">1. Assembly Tray (Click parts below in order)</span>
+                        <button onclick="clearBuilderTray()" style="background: none; border: none; color: var(--rose-600); font-size: 0.78rem; font-weight: 700; cursor: pointer;">Clear Tray</button>
+                    </div>
+                    <div id="wb-tray" class="wb-tray">
+                        <span style="font-size: 0.85rem; color: var(--slate-400); font-style: italic;">Click word parts from the bank below...</span>
+                    </div>
+                </div>
+
+                <!-- Word Part Bank -->
+                <div>
+                    <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500); margin-bottom: 0.5rem;">2. Strand 7 Word Part Bank</div>
+                    <div id="wb-bank" class="wb-bank-grid"></div>
+                </div>
+
+                <!-- Step 3: Combining Vowel / Final Spelling Check -->
+                <div id="wb-spelling-step" class="spelling-box hidden">
+                    <div class="spelling-inner">
+                        <h4 style="font-size: 0.9rem; font-weight: 800; color: var(--teal-700);">3. Apply Strand 1 Combining Rules: Choose the correct final spelling!</h4>
+                        <p style="font-size: 0.78rem; color: var(--slate-700); margin-top: 0.25rem;">Rule check: Drop the combining vowel "o" before a suffix starting with a vowel (e.g., -itis, -oma, -algia); keep "o" before a suffix starting with a consonant (e.g., -cele, -glia, -plegia).</p>
+                        <div id="wb-spelling-options" class="spelling-options-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Feedback Banner -->
+                <div id="wb-feedback" class="feedback-alert hidden"></div>
+
+                <!-- Next Challenge Button -->
+                <div style="margin-top: 1.25rem; display: flex; justify-content: flex-end;">
+                    <button id="wb-next-btn" onclick="nextBuilderChallenge()" class="btn btn-primary hidden" style="padding: 0.75rem 1.35rem;">
+                        Next Word Challenge →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 4: SPEED MATCHING ARENA
+        =========================================== -->
+        <section id="view-matching" class="tab-view hidden">
+            <div class="card-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="section-title">Speed Matching Arena</h2>
+                        <p class="section-sub">Select a medical term/abbreviation and its matching definition to clear the 6-pair board.</p>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;">
+                        <select id="match-filter" class="select-input" onchange="startNewMatchRound()">
+                            <option value="ALL">All Mixed (75)</option>
+                            <option value="Std 1: Abbreviations">Abbreviations (10)</option>
+                            <option value="ROOTS_PREFIXES">Roots & Prefixes (27)</option>
+                            <option value="Std 5: Clinical Terms">Clinical Terms (29)</option>
+                        </select>
+                        <div class="font-mono" style="padding: 0.5rem 0.85rem; border-radius: var(--radius-md); background: var(--navy-900); color: #ffffff; font-size: 0.85rem; font-weight: 700;">
+                            ⏱ <span id="match-timer">00:00</span>
+                        </div>
+                        <div style="padding: 0.5rem 0.85rem; border-radius: var(--radius-md); background: var(--teal-50); border: 1px solid var(--teal-100); color: var(--teal-700); font-size: 0.82rem; font-weight: 700;">
+                            Best: <span id="match-best">--:--</span>
+                        </div>
+                        <div style="padding: 0.5rem 0.85rem; border-radius: var(--radius-md); background: var(--amber-50); border: 1px solid var(--amber-200); color: var(--amber-800); font-size: 0.82rem; font-weight: 700;">
+                            Streak: <span id="match-streak">0</span>
+                        </div>
+                        <button onclick="startNewMatchRound()" class="btn btn-primary">New Board</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matching Board -->
+            <div id="match-board" class="match-grid">
+                <div>
+                    <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate-400); padding-left: 0.25rem;">Terms / Roots / Abbreviations</div>
+                    <div id="match-terms-col" class="match-col-list"></div>
+                </div>
+                <div>
+                    <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate-400); padding-left: 0.25rem;">Definitions</div>
+                    <div id="match-defs-col" class="match-col-list"></div>
+                </div>
+            </div>
+
+            <!-- Round Complete Card -->
+            <div id="match-complete" class="complete-card hidden">
+                <div style="width: 3.5rem; height: 3.5rem; border-radius: 9999px; background: var(--emerald-100); color: var(--emerald-600); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">
+                    🏆
+                </div>
+                <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--navy-900);">Board Cleared!</h3>
+                <p style="color: var(--slate-600); margin-top: 0.35rem; font-size: 0.92rem;">You matched all 6 nervous system pairs in <span id="match-final-time" class="font-mono" style="font-weight: 800; color: var(--emerald-700);">00:00</span>.</p>
+                <button onclick="startNewMatchRound()" class="btn btn-primary" style="margin-top: 1.25rem; padding: 0.75rem 1.5rem;">Play Another Round</button>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 5: STATE EXAM PRACTICE QUIZ
+        =========================================== -->
+        <section id="view-quiz" class="tab-view hidden">
+            <div class="card-panel quiz-wrap">
+                <div class="panel-header" style="padding-bottom: 1.25rem; border-bottom: 1px solid var(--slate-200);">
+                    <div>
+                        <span class="std-tag" style="background: var(--navy-900); color: #ffffff;">Utah CTE Test #704 Simulation</span>
+                        <h2 class="section-title" style="margin-top: 0.35rem;">Strand 7 Self-Grading Practice Exam</h2>
+                        <p class="section-sub">18 state-exam style questions covering clinical scenarios, chart abbreviations, word part dissection, paralysis comparisons, and speech disorders. Passing cut score: <strong>74%</strong>.</p>
+                    </div>
+                    <button onclick="resetQuiz()" class="btn btn-outline" style="align-self: flex-start;">Retake Quiz</button>
+                </div>
+
+                <!-- Quiz Score Banner -->
+                <div id="quiz-results-banner" class="feedback-alert hidden"></div>
+
+                <!-- Questions List -->
+                <div id="quiz-questions-container"></div>
+
+                <!-- Submit Quiz Bar -->
+                <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--slate-200); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+                    <span id="quiz-answered-status" style="font-size: 0.875rem; font-weight: 600; color: var(--slate-500);">0 of 18 questions answered</span>
+                    <button id="submit-quiz-btn" onclick="gradeQuiz()" class="btn btn-primary" style="padding: 0.85rem 1.75rem; font-weight: 800;">
+                        Submit & Grade Practice Exam
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-inner">
+            <div>Aligned to <strong>Utah CTE Medical Terminology Strands & Standards (Revised Aug 2025 / Test #704)</strong></div>
+            <div>Strand 7: The Nervous System • Self-Contained Review Module</div>
+        </div>
+    </footer>
+
+    <!-- Application Logic & Complete Strand 7 Dataset -->
+    <script>
+        // =========================================================================
+        // 1. COMPLETE STRAND 7 DATASET (ALL 75 EXACT ITEMS FROM STANDARDS DOC)
+        // =========================================================================
+        const strand7Data = [
+            // Standard 1: Medical Abbreviations (10)
+            { id: 's7-1-1', category: 'Std 1: Abbreviations', term: 'ASA', definition: 'aspirin' },
+            { id: 's7-1-2', category: 'Std 1: Abbreviations', term: 'CNS', definition: 'central nervous system' },
+            { id: 's7-1-3', category: 'Std 1: Abbreviations', term: 'CSF', definition: 'cerebrospinal fluid' },
+            { id: 's7-1-4', category: 'Std 1: Abbreviations', term: 'CVA', definition: 'cerebrovascular accident' },
+            { id: 's7-1-5', category: 'Std 1: Abbreviations', term: 'EEG', definition: 'electroencephalogram' },
+            { id: 's7-1-6', category: 'Std 1: Abbreviations', term: 'HA', definition: 'headache' },
+            { id: 's7-1-7', category: 'Std 1: Abbreviations', term: 'ICP', definition: 'intracranial pressure' },
+            { id: 's7-1-8', category: 'Std 1: Abbreviations', term: 'LOC', definition: 'level of consciousness or loss of consciousness' },
+            { id: 's7-1-9', category: 'Std 1: Abbreviations', term: 'LP', definition: 'lumbar puncture' },
+            { id: 's7-1-10', category: 'Std 1: Abbreviations', term: 'TIA', definition: 'transient ischemic attack' },
+
+            // Standard 2: Prefixes (5)
+            { id: 's7-2-1', category: 'Std 2: Prefixes', term: 'af-', definition: 'toward' },
+            { id: 's7-2-2', category: 'Std 2: Prefixes', term: 'dys-', definition: 'bad; painful; difficult' },
+            { id: 's7-2-3', category: 'Std 2: Prefixes', term: 'ef-', definition: 'away from' },
+            { id: 's7-2-4', category: 'Std 2: Prefixes', term: 'para-', definition: 'beside, beyond, near' },
+            { id: 's7-2-5', category: 'Std 2: Prefixes', term: 'quadri-', definition: 'four' },
+
+            // Standard 3: Word Roots / Combining Forms (22)
+            { id: 's7-3-1', category: 'Std 3: Word Roots', term: 'astr/o', definition: 'star shaped' },
+            { id: 's7-3-2', category: 'Std 3: Word Roots', term: 'cephal/o', definition: 'head' },
+            { id: 's7-3-3', category: 'Std 3: Word Roots', term: 'cerebell/o', definition: 'cerebellum; small hind brain' },
+            { id: 's7-3-4', category: 'Std 3: Word Roots', term: 'cerebr/o', definition: 'brain, cerebrum; large outer brain' },
+            { id: 's7-3-5', category: 'Std 3: Word Roots', term: 'crani/o', definition: 'cranium, head, skull' },
+            { id: 's7-3-6', category: 'Std 3: Word Roots', term: 'dendr/o', definition: 'tree' },
+            { id: 's7-3-7', category: 'Std 3: Word Roots', term: 'dur/o', definition: 'tough' },
+            { id: 's7-3-8', category: 'Std 3: Word Roots', term: 'electr/o', definition: 'electricity' },
+            { id: 's7-3-9', category: 'Std 3: Word Roots', term: 'encephal/o', definition: 'brain' },
+            { id: 's7-3-10', category: 'Std 3: Word Roots', term: 'esthes/o', definition: 'feeling, sensation' },
+            { id: 's7-3-11', category: 'Std 3: Word Roots', term: 'gangli/o', definition: 'ganglion; mass of nerve tissue' },
+            { id: 's7-3-12', category: 'Std 3: Word Roots', term: 'lob/o', definition: 'brain lobe' },
+            { id: 's7-3-13', category: 'Std 3: Word Roots', term: 'mening/o', definition: 'meninges' },
+            { id: 's7-3-14', category: 'Std 3: Word Roots', term: 'myel/o', definition: 'spinal cord, bone marrow' },
+            { id: 's7-3-15', category: 'Std 3: Word Roots', term: 'neur/o', definition: 'nerve' },
+            { id: 's7-3-16', category: 'Std 3: Word Roots', term: 'phren/o', definition: 'diaphragm; mind' },
+            { id: 's7-3-17', category: 'Std 3: Word Roots', term: 'poli/o', definition: 'gray' },
+            { id: 's7-3-18', category: 'Std 3: Word Roots', term: 'psych/o', definition: 'mind' },
+            { id: 's7-3-19', category: 'Std 3: Word Roots', term: 'schiz/o', definition: 'split' },
+            { id: 's7-3-20', category: 'Std 3: Word Roots', term: 'somat/o', definition: 'body' },
+            { id: 's7-3-21', category: 'Std 3: Word Roots', term: 'spin/o', definition: 'spine' },
+            { id: 's7-3-22', category: 'Std 3: Word Roots', term: 'vertebr/o', definition: 'vertebra, spine' },
+
+            // Standard 4: Suffixes (9)
+            { id: 's7-4-1', category: 'Std 4: Suffixes', term: '-ferent', definition: 'carry' },
+            { id: 's7-4-2', category: 'Std 4: Suffixes', term: '-glia', definition: 'gluey substance' },
+            { id: 's7-4-3', category: 'Std 4: Suffixes', term: '-lepsy', definition: 'seizure, attack' },
+            { id: 's7-4-4', category: 'Std 4: Suffixes', term: '-mania', definition: 'madness' },
+            { id: 's7-4-5', category: 'Std 4: Suffixes', term: '-mentia', definition: 'mind' },
+            { id: 's7-4-6', category: 'Std 4: Suffixes', term: '-paresis', definition: 'slight paralysis' },
+            { id: 's7-4-7', category: 'Std 4: Suffixes', term: '-phasia', definition: 'speech' },
+            { id: 's7-4-8', category: 'Std 4: Suffixes', term: '-phobia', definition: 'irrational fear' },
+            { id: 's7-4-9', category: 'Std 4: Suffixes', term: '-plegia', definition: 'paralysis' },
+
+            // Standard 5: Diseases, Disorders, Procedures, Treatments, Diagnostic Tests (29)
+            { id: 's7-5-1', category: 'Std 5: Clinical Terms', term: 'aphasia', definition: 'without speech' },
+            { id: 's7-5-2', category: 'Std 5: Clinical Terms', term: 'astrocyte', definition: 'star (shaped) cell' },
+            { id: 's7-5-3', category: 'Std 5: Clinical Terms', term: 'cephalic', definition: 'pertaining to the head' },
+            { id: 's7-5-4', category: 'Std 5: Clinical Terms', term: 'cerebral', definition: 'pertaining to the cerebrum' },
+            { id: 's7-5-5', category: 'Std 5: Clinical Terms', term: 'cerebrospinal', definition: 'pertaining to the brain and spinal cord' },
+            { id: 's7-5-6', category: 'Std 5: Clinical Terms', term: 'dementia', definition: 'memory impairment' },
+            { id: 's7-5-7', category: 'Std 5: Clinical Terms', term: 'dendrite', definition: 'branch of a neuron' },
+            { id: 's7-5-8', category: 'Std 5: Clinical Terms', term: 'dysphasia', definition: 'difficulty speaking' },
+            { id: 's7-5-9', category: 'Std 5: Clinical Terms', term: 'encephalitis', definition: 'inflammation of the brain' },
+            { id: 's7-5-10', category: 'Std 5: Clinical Terms', term: 'encephalotomy', definition: 'to cut into the brain' },
+            { id: 's7-5-11', category: 'Std 5: Clinical Terms', term: 'glioma', definition: 'tumor of the glial tissue of the nervous system' },
+            { id: 's7-5-12', category: 'Std 5: Clinical Terms', term: 'hemiparesis', definition: 'half (of the body) slightly paralyzed' },
+            { id: 's7-5-13', category: 'Std 5: Clinical Terms', term: 'hemiplegia', definition: 'half paralyzed (left or right side of body)' },
+            { id: 's7-5-14', category: 'Std 5: Clinical Terms', term: 'meninges', definition: 'the membranes that cover the brain and spinal cord' },
+            { id: 's7-5-15', category: 'Std 5: Clinical Terms', term: 'meningitis', definition: 'inflammation of the brain coverings (meninges)' },
+            { id: 's7-5-16', category: 'Std 5: Clinical Terms', term: 'meningocele', definition: 'herniation or protrusion of the meninges' },
+            { id: 's7-5-17', category: 'Std 5: Clinical Terms', term: 'microencephaly', definition: 'abnormally small head' },
+            { id: 's7-5-18', category: 'Std 5: Clinical Terms', term: 'myelin', definition: 'a fatty white substance that surrounds the axon of some nerve cells' },
+            { id: 's7-5-19', category: 'Std 5: Clinical Terms', term: 'narcolepsy', definition: 'sleep seizures' },
+            { id: 's7-5-20', category: 'Std 5: Clinical Terms', term: 'neuralgia', definition: 'nerve pain' },
+            { id: 's7-5-21', category: 'Std 5: Clinical Terms', term: 'neuroglia', definition: 'pertaining to nerve glue (supporting nerve cells)' },
+            { id: 's7-5-22', category: 'Std 5: Clinical Terms', term: 'neurology', definition: 'the study of nerves' },
+            { id: 's7-5-23', category: 'Std 5: Clinical Terms', term: 'neuron', definition: 'a nerve cell' },
+            { id: 's7-5-24', category: 'Std 5: Clinical Terms', term: 'paralysis', definition: 'loss of the ability to move' },
+            { id: 's7-5-25', category: 'Std 5: Clinical Terms', term: 'paraplegia', definition: 'paralysis of the legs and lower body' },
+            { id: 's7-5-26', category: 'Std 5: Clinical Terms', term: 'quadriplegia', definition: 'paralysis of four (referring to the paralysis of all four limbs)' },
+            { id: 's7-5-27', category: 'Std 5: Clinical Terms', term: 'radiculopathy', definition: 'nerve root disease' },
+            { id: 's7-5-28', category: 'Std 5: Clinical Terms', term: 'schizophrenia', definition: 'condition of split mind' },
+            { id: 's7-5-29', category: 'Std 5: Clinical Terms', term: 'somatic', definition: 'referring to the body' }
+        ];
+
+        // =========================================================================
+        // 2. NAVIGATION & GLOBAL MASTERY STATE (PERSISTED UNDER STRAND 7 KEY)
+        // =========================================================================
+        const STORAGE_KEY_MASTERED = 'medterm_s7_nervous_mastered';
+        const STORAGE_KEY_BEST_TIME = 'medterm_s7_nervous_best_match';
+        let masteredIds = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_MASTERED) || '[]'));
+
+        function updateMasteryUI() {
+            localStorage.setItem(STORAGE_KEY_MASTERED, JSON.stringify([...masteredIds]));
+            document.getElementById('header-mastered-count').textContent = masteredIds.size;
+            document.getElementById('header-total-count').textContent = strand7Data.length;
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`view-${tabName}`).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            if (tabName === 'matching' && document.getElementById('match-terms-col').children.length === 0) {
+                startNewMatchRound();
+            }
+        }
+
+        // =========================================================================
+        // 3. TAB 1: STUDY GUIDE LOGIC
+        // =========================================================================
+        let currentStudyFilter = 'ALL';
+        let blurDefinitions = false;
+
+        function setStudyFilter(filter) {
+            currentStudyFilter = filter;
+            document.querySelectorAll('.pill-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+            });
+            renderStudyGuide();
+        }
+
+        function toggleSelfTestBlur() {
+            blurDefinitions = !blurDefinitions;
+            const btn = document.getElementById('toggle-blur-btn');
+            if (blurDefinitions) {
+                btn.classList.add('active-toggle');
+                btn.querySelector('span').textContent = 'Show All Definitions';
+            } else {
+                btn.classList.remove('active-toggle');
+                btn.querySelector('span').textContent = 'Hide Definitions (Self-Test)';
+            }
+            renderStudyGuide();
+        }
+
+        function renderStudyGuide() {
+            const query = document.getElementById('study-search').value.toLowerCase().trim();
+            const grid = document.getElementById('study-grid');
+
+            const filtered = strand7Data.filter(item => {
+                const matchesCat = currentStudyFilter === 'ALL' || item.category === currentStudyFilter;
+                const matchesQuery = item.term.toLowerCase().includes(query) || item.definition.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="card-panel" style="grid-column: 1 / -1; text-align: center; padding: 2.5rem;">
+                        <p style="color: var(--slate-500); font-weight: 600;">No Strand 7 terms matched "${query}".</p>
+                    </div>`;
+                return;
+            }
+
+            const tagClassMap = {
+                'Std 1: Abbreviations': 'tag-s1',
+                'Std 2: Prefixes': 'tag-s2',
+                'Std 3: Word Roots': 'tag-s3',
+                'Std 4: Suffixes': 'tag-s4',
+                'Std 5: Clinical Terms': 'tag-s5'
+            };
+
+            grid.innerHTML = filtered.map(item => {
+                const isMastered = masteredIds.has(item.id);
+                return `
+                <article class="term-card">
+                    <div>
+                        <div class="term-card-top">
+                            <span class="std-tag ${tagClassMap[item.category]}">${item.category}</span>
+                            <button onclick="toggleStudyMastery('${item.id}')" class="mastery-check-btn ${isMastered ? 'is-mastered' : ''}" title="${isMastered ? 'Marked as Mastered' : 'Mark as Mastered'}">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 class="term-title font-mono">${item.term}</h3>
+                    </div>
+                    <div onclick="revealSingleCard(this)" class="term-def-box ${blurDefinitions ? 'blurred-mode' : ''}">
+                        <p class="term-def-text ${blurDefinitions ? 'is-blurred' : ''}">${item.definition}</p>
+                        ${blurDefinitions ? '<span class="peek-hint">Click to reveal definition</span>' : ''}
+                    </div>
+                </article>`;
+            }).join('');
+        }
+
+        function revealSingleCard(boxEl) {
+            const p = boxEl.querySelector('.term-def-text');
+            if (p && p.classList.contains('is-blurred')) {
+                p.classList.remove('is-blurred');
+                const hint = boxEl.querySelector('.peek-hint');
+                if (hint) hint.remove();
+            }
+        }
+
+        function toggleStudyMastery(id) {
+            if (masteredIds.has(id)) {
+                masteredIds.delete(id);
+            } else {
+                masteredIds.add(id);
+            }
+            updateMasteryUI();
+            renderStudyGuide();
+        }
+
+        // =========================================================================
+        // 4. TAB 2: INTERACTIVE 3D FLASHCARDS LOGIC
+        // =========================================================================
+        let fcDeck = [];
+        let fcIndex = 0;
+        let fcFlipped = false;
+
+        function initFlashcardDeck() {
+            const filter = document.getElementById('fc-category-select').value;
+            if (filter === 'ALL') {
+                fcDeck = [...strand7Data];
+            } else if (filter === 'STILL_LEARNING') {
+                fcDeck = strand7Data.filter(item => !masteredIds.has(item.id));
+                if (fcDeck.length === 0) fcDeck = [...strand7Data];
+            } else {
+                fcDeck = strand7Data.filter(item => item.category === filter);
+            }
+            fcIndex = 0;
+            fcFlipped = false;
+            renderFlashcard();
+        }
+
+        function renderFlashcard() {
+            if (fcDeck.length === 0) return;
+            const card = fcDeck[fcIndex];
+            const inner = document.getElementById('fc-inner');
+
+            inner.classList.toggle('is-flipped', fcFlipped);
+
+            document.getElementById('fc-counter').textContent = `Card ${fcIndex + 1} of ${fcDeck.length}`;
+            const pct = ((fcIndex + 1) / fcDeck.length) * 100;
+            document.getElementById('fc-progress-bar').style.width = `${pct}%`;
+
+            document.getElementById('fc-front-cat').textContent = card.category;
+            document.getElementById('fc-front-text').textContent = card.term;
+            document.getElementById('fc-back-term').textContent = card.term;
+            document.getElementById('fc-back-text').textContent = card.definition;
+
+            const isMastered = masteredIds.has(card.id);
+            const badge = document.getElementById('fc-status-badge');
+            if (isMastered) {
+                badge.textContent = 'Mastered';
+                badge.className = 'status-badge status-mastered';
+            } else {
+                badge.textContent = 'Still Learning';
+                badge.className = 'status-badge status-learning';
+            }
+        }
+
+        function flipFlashcard() {
+            fcFlipped = !fcFlipped;
+            renderFlashcard();
+        }
+
+        function nextFlashcard() {
+            fcFlipped = false;
+            fcIndex = (fcIndex + 1) % fcDeck.length;
+            renderFlashcard();
+        }
+
+        function prevFlashcard() {
+            fcFlipped = false;
+            fcIndex = (fcIndex - 1 + fcDeck.length) % fcDeck.length;
+            renderFlashcard();
+        }
+
+        function shuffleFlashcards() {
+            for (let i = fcDeck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [fcDeck[i], fcDeck[j]] = [fcDeck[j], fcDeck[i]];
+            }
+            fcIndex = 0;
+            fcFlipped = false;
+            renderFlashcard();
+        }
+
+        function markFlashcard(isMastered) {
+            const card = fcDeck[fcIndex];
+            if (isMastered) {
+                masteredIds.add(card.id);
+            } else {
+                masteredIds.delete(card.id);
+            }
+            updateMasteryUI();
+            nextFlashcard();
+        }
+
+        function resetMastery() {
+            masteredIds.clear();
+            updateMasteryUI();
+            renderFlashcard();
+            renderStudyGuide();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('view-flashcards').classList.contains('hidden')) return;
+            if (e.code === 'Space' || e.code === 'Enter') {
+                if (document.activeElement && document.activeElement.tagName === 'BUTTON') return;
+                e.preventDefault();
+                flipFlashcard();
+            } else if (e.code === 'ArrowRight') {
+                nextFlashcard();
+            } else if (e.code === 'ArrowLeft') {
+                prevFlashcard();
+            }
+        });
+
+        // =========================================================================
+        // 5. TAB 3: WORD-BUILDING LAB LOGIC (16 NERVOUS SYSTEM CHALLENGES)
+        // =========================================================================
+        const wordBuilderChallenges = [
+            {
+                definition: 'without speech',
+                hint: 'Requires: Prefix (without, absence of) + Suffix (speech)',
+                parts: ['a-', '-phasia'],
+                distractors: ['dys-', 'para-', '-plegia', '-paresis'],
+                correctSpelling: 'aphasia',
+                spellingOptions: ['aphasia', 'anphasia', 'aphesia'],
+                explanation: 'a- (without, absence of) + -phasia (speech) = aphasia (without speech).'
+            },
+            {
+                definition: 'difficulty speaking',
+                hint: 'Requires: Prefix (bad; painful; difficult) + Suffix (speech)',
+                parts: ['dys-', '-phasia'],
+                distractors: ['a-', 'ef-', '-lepsy', '-mania'],
+                correctSpelling: 'dysphasia',
+                spellingOptions: ['dysphasia', 'disphasia', 'dysphagia'],
+                explanation: 'dys- (bad; painful; difficult) + -phasia (speech) = dysphasia (difficulty speaking). Note: Do not confuse with dysphagia (difficulty swallowing)!'
+            },
+            {
+                definition: 'inflammation of the brain',
+                hint: 'Requires: Combining Form (brain) + Suffix (inflammation)',
+                parts: ['encephal/o', '-itis'],
+                distractors: ['cerebr/o', 'mening/o', '-otomy', '-oma'],
+                correctSpelling: 'encephalitis',
+                spellingOptions: ['encephalitis', 'encephaloitis', 'encephilitis'],
+                explanation: 'encephal/o (brain) + -itis (inflammation). Drop the combining vowel "o" because -itis begins with a vowel.'
+            },
+            {
+                definition: 'to cut into the brain',
+                hint: 'Requires: Combining Form (brain) + Suffix (to cut into; incision)',
+                parts: ['encephal/o', '-otomy'],
+                distractors: ['crani/o', 'lob/o', '-itis', '-cele'],
+                correctSpelling: 'encephalotomy',
+                spellingOptions: ['encephalotomy', 'encephaltomy', 'encephalectomy'],
+                explanation: 'encephal/o (brain) + -tomy / -otomy (to cut into; incision). The combining vowel "o" connects the root to -tomy.'
+            },
+            {
+                definition: 'tumor of the glial tissue of the nervous system',
+                hint: 'Requires: Root/Suffix (gluey substance) + Suffix (mass, tumor)',
+                parts: ['-glia', '-oma'],
+                distractors: ['neur/o', 'astr/o', '-itis', '-lepsy'],
+                correctSpelling: 'glioma',
+                spellingOptions: ['glioma', 'gliaoma', 'gliooma'],
+                explanation: 'gli/o (gluey substance / neuroglia) + -oma (mass, tumor). Drop the vowel before -oma.'
+            },
+            {
+                definition: 'half (of the body) slightly paralyzed',
+                hint: 'Requires: Prefix (one half) + Suffix (slight paralysis)',
+                parts: ['hemi-', '-paresis'],
+                distractors: ['para-', 'quadri-', '-plegia', '-phasia'],
+                correctSpelling: 'hemiparesis',
+                spellingOptions: ['hemiparesis', 'hemiplegia', 'hemiparasis'],
+                explanation: 'hemi- (one half) + -paresis (slight paralysis) = half (of the body) slightly paralyzed.'
+            },
+            {
+                definition: 'half paralyzed (left or right side of body)',
+                hint: 'Requires: Prefix (one half) + Suffix (paralysis)',
+                parts: ['hemi-', '-plegia'],
+                distractors: ['para-', 'quadri-', '-paresis', '-lepsy'],
+                correctSpelling: 'hemiplegia',
+                spellingOptions: ['hemiplegia', 'hemiparesis', 'hemiplagia'],
+                explanation: 'hemi- (one half) + -plegia (paralysis) = half paralyzed (left or right side of body).'
+            },
+            {
+                definition: 'inflammation of the brain coverings (meninges)',
+                hint: 'Requires: Combining Form (meninges) + Suffix (inflammation)',
+                parts: ['mening/o', '-itis'],
+                distractors: ['myel/o', 'encephal/o', '-cele', '-oma'],
+                correctSpelling: 'meningitis',
+                spellingOptions: ['meningitis', 'meningoitis', 'meningititis'],
+                explanation: 'mening/o (meninges) + -itis (inflammation). Drop the combining vowel "o" before the vowel suffix -itis.'
+            },
+            {
+                definition: 'herniation or protrusion of the meninges',
+                hint: 'Requires: Combining Form (meninges) + Suffix (herniation, pouch)',
+                parts: ['mening/o', '-cele'],
+                distractors: ['myel/o', 'spin/o', '-itis', '-glia'],
+                correctSpelling: 'meningocele',
+                spellingOptions: ['meningocele', 'meningcele', 'meningocoele'],
+                explanation: 'mening/o (meninges) + -cele (herniation, pouch). Keep the combining vowel "o" because -cele starts with a consonant (c).'
+            },
+            {
+                definition: 'abnormally small head',
+                hint: 'Requires: Prefix (very small) + Root (brain/head) + Suffix (condition)',
+                parts: ['micro-', 'encephal/o', '-y'],
+                distractors: ['cephal/o', 'crani/o', '-itis', '-ia'],
+                correctSpelling: 'microencephaly',
+                spellingOptions: ['microencephaly', 'micrencephaly', 'microencephaloy'],
+                explanation: 'micro- (very small) + encephal/o (brain) + -y (condition) = microencephaly (defined in Standard 5 as abnormally small head).'
+            },
+            {
+                definition: 'sleep seizures',
+                hint: 'Requires: Root (numbness, stupor/sleep) + Suffix (seizure, attack)',
+                parts: ['narc/o', '-lepsy'],
+                distractors: ['psych/o', 'phren/o', '-mania', '-phobia'],
+                correctSpelling: 'narcolepsy',
+                spellingOptions: ['narcolepsy', 'narclepsy', 'narcolapsy'],
+                explanation: 'narc/o (numbness, stupor) + -lepsy (seizure, attack). Keep the combining vowel "o" before the consonant suffix -lepsy.'
+            },
+            {
+                definition: 'nerve pain',
+                hint: 'Requires: Combining Form (nerve) + Suffix (pain)',
+                parts: ['neur/o', '-algia'],
+                distractors: ['myel/o', 'esthes/o', '-glia', '-itis'],
+                correctSpelling: 'neuralgia',
+                spellingOptions: ['neuralgia', 'neuroalgia', 'neuralgesia'],
+                explanation: 'neur/o (nerve) + -algia (pain). Drop the combining vowel "o" because -algia begins with a vowel.'
+            },
+            {
+                definition: 'pertaining to nerve glue (supporting nerve cells)',
+                hint: 'Requires: Combining Form (nerve) + Suffix (gluey substance)',
+                parts: ['neur/o', '-glia'],
+                distractors: ['astr/o', 'dendr/o', '-algia', '-oma'],
+                correctSpelling: 'neuroglia',
+                spellingOptions: ['neuroglia', 'neurglia', 'neuroglea'],
+                explanation: 'neur/o (nerve) + -glia (gluey substance). Keep the combining vowel "o" because -glia starts with a consonant (g).'
+            },
+            {
+                definition: 'paralysis of the legs and lower body',
+                hint: 'Requires: Prefix (beside, beyond, near) + Suffix (paralysis)',
+                parts: ['para-', '-plegia'],
+                distractors: ['quadri-', 'dys-', '-paresis', '-phasia'],
+                correctSpelling: 'paraplegia',
+                spellingOptions: ['paraplegia', 'paraparesis', 'paraplagia'],
+                explanation: 'para- (beside, beyond, near) + -plegia (paralysis) = paralysis of the legs and lower body.'
+            },
+            {
+                definition: 'paralysis of four (referring to the paralysis of all four limbs)',
+                hint: 'Requires: Prefix (four) + Suffix (paralysis)',
+                parts: ['quadri-', '-plegia'],
+                distractors: ['para-', 'dys-', '-paresis', '-lepsy'],
+                correctSpelling: 'quadriplegia',
+                spellingOptions: ['quadriplegia', 'quadraplegia', 'quadriparesis'],
+                explanation: 'quadri- (four) + -plegia (paralysis) = paralysis of all four limbs.'
+            },
+            {
+                definition: 'condition of split mind',
+                hint: 'Requires: Combining Form (split) + Root (mind) + Suffix (condition)',
+                parts: ['schiz/o', 'phren/o', '-ia'],
+                distractors: ['psych/o', 'somat/o', '-mania', '-mentia'],
+                correctSpelling: 'schizophrenia',
+                spellingOptions: ['schizophrenia', 'schizphrenia', 'schizophrenioa'],
+                explanation: 'schiz/o (split) + phren/o (mind) + -ia (condition). Keep "o" between two roots (schiz/o + phren), and drop "o" before the vowel suffix -ia.'
+            }
+        ];
+
+        let wbIndex = 0;
+        let wbScore = 0;
+        let wbSelectedParts = [];
+        let wbSolvedCurrent = false;
+
+        function loadBuilderChallenge() {
+            const challenge = wordBuilderChallenges[wbIndex];
+            wbSelectedParts = [];
+            wbSolvedCurrent = false;
+
+            document.getElementById('wb-progress').textContent = `${wbIndex + 1} / ${wordBuilderChallenges.length}`;
+            document.getElementById('wb-target-def').textContent = challenge.definition;
+            document.getElementById('wb-target-hint').textContent = challenge.hint;
+            document.getElementById('wb-spelling-step').classList.add('hidden');
+            document.getElementById('wb-feedback').classList.add('hidden');
+            document.getElementById('wb-next-btn').classList.add('hidden');
+
+            renderBuilderTray();
+
+            const bankParts = [...challenge.parts, ...challenge.distractors].sort(() => Math.random() - 0.5);
+            const bankEl = document.getElementById('wb-bank');
+            bankEl.innerHTML = bankParts.map(part => `
+                <button onclick="addPartToTray('${part}')" class="part-tile font-mono">
+                    ${part}
+                </button>
+            `).join('');
+        }
+
+        function renderBuilderTray() {
+            const tray = document.getElementById('wb-tray');
+            if (wbSelectedParts.length === 0) {
+                tray.innerHTML = `<span style="font-size: 0.85rem; color: var(--slate-400); font-style: italic;">Click word parts from the bank below...</span>`;
+                return;
+            }
+            tray.innerHTML = wbSelectedParts.map((part, idx) => `
+                <span class="tray-chip font-mono">
+                    ${part}
+                    <button onclick="removePartFromTray(${idx})" aria-label="Remove part">✕</button>
+                </span>
+                ${idx < wbSelectedParts.length - 1 ? '<span style="color: var(--slate-400); font-weight: 800;">+</span>' : ''}
+            `).join('');
+        }
+
+        function addPartToTray(part) {
+            if (wbSolvedCurrent) return;
+            const challenge = wordBuilderChallenges[wbIndex];
+            if (wbSelectedParts.length >= challenge.parts.length) return;
+
+            wbSelectedParts.push(part);
+            renderBuilderTray();
+
+            if (wbSelectedParts.length === challenge.parts.length) {
+                const isOrderCorrect = wbSelectedParts.every((val, i) => val === challenge.parts[i]);
+                const fb = document.getElementById('wb-feedback');
+                if (isOrderCorrect) {
+                    fb.className = 'feedback-alert alert-info';
+                    fb.innerHTML = `<strong>✓ Correct word parts!</strong> Now complete Step 3 above to apply Strand 1 combining rules.`;
+                    fb.classList.remove('hidden');
+                    showSpellingStep(challenge);
+                } else {
+                    fb.className = 'feedback-alert alert-error animate-shake';
+                    fb.innerHTML = `<strong>✕ Not quite!</strong> Check the order or meanings of those word parts and try again.`;
+                    fb.classList.remove('hidden');
+                }
+            }
+        }
+
+        function removePartFromTray(idx) {
+            if (wbSolvedCurrent) return;
+            wbSelectedParts.splice(idx, 1);
+            document.getElementById('wb-spelling-step').classList.add('hidden');
+            document.getElementById('wb-feedback').classList.add('hidden');
+            renderBuilderTray();
+        }
+
+        function clearBuilderTray() {
+            if (wbSolvedCurrent) return;
+            wbSelectedParts = [];
+            document.getElementById('wb-spelling-step').classList.add('hidden');
+            document.getElementById('wb-feedback').classList.add('hidden');
+            renderBuilderTray();
+        }
+
+        function showSpellingStep(challenge) {
+            const stepDiv = document.getElementById('wb-spelling-step');
+            const optionsDiv = document.getElementById('wb-spelling-options');
+            const shuffled = [...challenge.spellingOptions].sort(() => Math.random() - 0.5);
+
+            optionsDiv.innerHTML = shuffled.map(opt => `
+                <button onclick="checkFinalSpelling('${opt}')" class="spelling-btn font-mono">
+                    ${opt}
+                </button>
+            `).join('');
+            stepDiv.classList.remove('hidden');
+        }
+
+        function checkFinalSpelling(chosen) {
+            if (wbSolvedCurrent) return;
+            const challenge = wordBuilderChallenges[wbIndex];
+            const fb = document.getElementById('wb-feedback');
+
+            if (chosen === challenge.correctSpelling) {
+                wbSolvedCurrent = true;
+                wbScore++;
+                document.getElementById('wb-score').textContent = wbScore;
+                fb.className = 'feedback-alert alert-success';
+                fb.innerHTML = `
+                    <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 0.25rem;">★ Correct! <span class="font-mono" style="text-decoration: underline;">${challenge.correctSpelling}</span></div>
+                    <p>${challenge.explanation}</p>
+                `;
+                document.getElementById('wb-next-btn').classList.remove('hidden');
+            } else {
+                fb.className = 'feedback-alert alert-error animate-shake';
+                fb.innerHTML = `<strong>⚠ Check the combining vowel rule!</strong> Remember: drop "o" before a suffix starting with a vowel; keep "o" before a suffix starting with a consonant.`;
+            }
+        }
+
+        function nextBuilderChallenge() {
+            wbIndex = (wbIndex + 1) % wordBuilderChallenges.length;
+            loadBuilderChallenge();
+        }
+
+        // =========================================================================
+        // 6. TAB 4: SPEED MATCHING ARENA LOGIC
+        // =========================================================================
+        let matchPairs = [];
+        let selectedTermId = null;
+        let selectedDefId = null;
+        let matchedCount = 0;
+        let matchStreak = 0;
+        let matchTimerInterval = null;
+        let matchSeconds = 0;
+        let bestMatchSeconds = localStorage.getItem(STORAGE_KEY_BEST_TIME) ? parseInt(localStorage.getItem(STORAGE_KEY_BEST_TIME), 10) : null;
+
+        function formatSeconds(sec) {
+            const mins = String(Math.floor(sec / 60)).padStart(2, '0');
+            const secs = String(sec % 60).padStart(2, '0');
+            return `${mins}:${secs}`;
+        }
+
+        function updateBestTimeUI() {
+            document.getElementById('match-best').textContent = bestMatchSeconds !== null ? formatSeconds(bestMatchSeconds) : '--:--';
+        }
+
+        function startNewMatchRound() {
+            clearInterval(matchTimerInterval);
+            matchSeconds = 0;
+            matchedCount = 0;
+            selectedTermId = null;
+            selectedDefId = null;
+            document.getElementById('match-timer').textContent = '00:00';
+            document.getElementById('match-complete').classList.add('hidden');
+            document.getElementById('match-board').classList.remove('hidden');
+
+            const filter = document.getElementById('match-filter').value;
+            let pool = [];
+            if (filter === 'ALL') {
+                pool = [...strand7Data];
+            } else if (filter === 'ROOTS_PREFIXES') {
+                pool = strand7Data.filter(i => i.category === 'Std 2: Prefixes' || i.category === 'Std 3: Word Roots');
+            } else {
+                pool = strand7Data.filter(i => i.category === filter);
+            }
+
+            pool.sort(() => Math.random() - 0.5);
+            matchPairs = pool.slice(0, 6);
+
+            const termsCol = document.getElementById('match-terms-col');
+            const defsCol = document.getElementById('match-defs-col');
+
+            const shuffledTerms = [...matchPairs].sort(() => Math.random() - 0.5);
+            const shuffledDefs = [...matchPairs].sort(() => Math.random() - 0.5);
+
+            termsCol.innerHTML = shuffledTerms.map(item => `
+                <button id="m-term-${item.id}" onclick="selectMatchTerm('${item.id}')" class="match-tile match-term-btn font-mono" style="font-weight: 700;">
+                    ${item.term}
+                </button>
+            `).join('');
+
+            defsCol.innerHTML = shuffledDefs.map(item => `
+                <button id="m-def-${item.id}" onclick="selectMatchDef('${item.id}')" class="match-tile match-def-btn" style="font-weight: 500;">
+                    ${item.definition}
+                </button>
+            `).join('');
+
+            matchTimerInterval = setInterval(() => {
+                matchSeconds++;
+                document.getElementById('match-timer').textContent = formatSeconds(matchSeconds);
+            }, 1000);
+        }
+
+        function selectMatchTerm(id) {
+            const btn = document.getElementById(`m-term-${id}`);
+            if (btn.disabled) return;
+
+            document.querySelectorAll('.match-term-btn').forEach(b => {
+                if (!b.disabled) b.classList.remove('selected');
+            });
+            selectedTermId = id;
+            btn.classList.add('selected');
+            evaluateMatchPair();
+        }
+
+        function selectMatchDef(id) {
+            const btn = document.getElementById(`m-def-${id}`);
+            if (btn.disabled) return;
+
+            document.querySelectorAll('.match-def-btn').forEach(b => {
+                if (!b.disabled) b.classList.remove('selected');
+            });
+            selectedDefId = id;
+            btn.classList.add('selected');
+            evaluateMatchPair();
+        }
+
+        function evaluateMatchPair() {
+            if (!selectedTermId || !selectedDefId) return;
+
+            const termBtn = document.getElementById(`m-term-${selectedTermId}`);
+            const defBtn = document.getElementById(`m-def-${selectedDefId}`);
+
+            if (selectedTermId === selectedDefId) {
+                termBtn.disabled = true;
+                defBtn.disabled = true;
+                termBtn.classList.remove('selected');
+                defBtn.classList.remove('selected');
+                termBtn.classList.add('matched');
+                defBtn.classList.add('matched');
+
+                matchedCount++;
+                matchStreak++;
+                document.getElementById('match-streak').textContent = matchStreak;
+
+                if (matchedCount === matchPairs.length) {
+                    clearInterval(matchTimerInterval);
+                    if (bestMatchSeconds === null || matchSeconds < bestMatchSeconds) {
+                        bestMatchSeconds = matchSeconds;
+                        localStorage.setItem(STORAGE_KEY_BEST_TIME, String(bestMatchSeconds));
+                        updateBestTimeUI();
+                    }
+                    document.getElementById('match-final-time').textContent = formatSeconds(matchSeconds);
+                    setTimeout(() => {
+                        document.getElementById('match-board').classList.add('hidden');
+                        document.getElementById('match-complete').classList.remove('hidden');
+                    }, 350);
+                }
+            } else {
+                matchStreak = 0;
+                document.getElementById('match-streak').textContent = matchStreak;
+                termBtn.classList.add('wrong');
+                defBtn.classList.add('wrong');
+                setTimeout(() => {
+                    termBtn.classList.remove('wrong', 'selected');
+                    defBtn.classList.remove('wrong', 'selected');
+                }, 420);
+            }
+
+            selectedTermId = null;
+            selectedDefId = null;
+        }
+
+        // =========================================================================
+        // 7. TAB 5: STATE EXAM PRACTICE QUIZ (18 QUESTIONS)
+        // =========================================================================
+        const quizQuestions = [
+            {
+                q: 'An emergency department patient presents with sudden slurred speech and right-sided facial droop that completely resolves within 20 minutes. Which abbreviation describes this "mini-stroke"?',
+                options: ['CVA', 'TIA', 'ICP', 'EEG'],
+                answer: 1,
+                rationale: 'Standard 1 defines TIA as transient ischemic attack (temporary neurological symptoms that resolve), whereas CVA is a cerebrovascular accident (stroke).'
+            },
+            {
+                q: 'To test for suspected "meningitis", a physician performs an "LP" to collect "CSF". What do these three terms mean?',
+                options: [
+                    'Inflammation of the brain coverings; lumbar puncture; cerebrospinal fluid',
+                    'Herniation of the spinal cord; level of consciousness; central spinal fluid',
+                    'Inflammation of the brain; lateral puncture; cerebral systemic fluid',
+                    'Tumor of the glial tissue; lumbar pressure; cranial sensory fluid'
+                ],
+                answer: 0,
+                rationale: 'meningitis = inflammation of the brain coverings (meninges); LP = lumbar puncture; CSF = cerebrospinal fluid.'
+            },
+            {
+                q: 'Following a stroke, a patient has slight paralysis on the left side of the body. Which term accurately documents this finding?',
+                options: ['Hemiplegia', 'Hemiparesis', 'Paraplegia', 'Quadriplegia'],
+                answer: 1,
+                rationale: 'hemi- (one half) + -paresis (slight paralysis) = hemiparesis (half of the body slightly paralyzed). Hemiplegia is full paralysis of half the body.'
+            },
+            {
+                q: 'What is the difference between "aphasia" and "dysphasia"?',
+                options: [
+                    'Aphasia is difficulty speaking; dysphasia is complete absence of speech',
+                    'Aphasia is without speech; dysphasia is difficulty speaking',
+                    'Aphasia is inability to swallow; dysphasia is memory impairment',
+                    'Aphasia is nerve pain; dysphasia is sleep seizures'
+                ],
+                answer: 1,
+                rationale: 'a- (without) + -phasia (speech) = aphasia (without speech); dys- (bad; painful; difficult) + -phasia (speech) = dysphasia (difficulty speaking).'
+            },
+            {
+                q: 'Which pair of prefixes represent opposite directions of nerve impulse transmission ("toward" vs. "away from")?',
+                options: [
+                    'para- and quadri-',
+                    'af- and ef-',
+                    'dys- and a-',
+                    'schiz- and psych-'
+                ],
+                answer: 1,
+                rationale: 'Standard 2 defines af- as toward (as in afferent neurons) and ef- as away from (as in efferent neurons).'
+            },
+            {
+                q: 'A patient suffers a high cervical spinal cord injury resulting in paralysis of all four limbs. Which condition is present?',
+                options: ['Paraplegia', 'Hemiplegia', 'Quadriplegia', 'Hemiparesis'],
+                answer: 2,
+                rationale: 'Standard 5 defines quadriplegia as paralysis of four (referring to the paralysis of all four limbs), while paraplegia is paralysis of the legs and lower body.'
+            },
+            {
+                q: 'Which combining form refers to the "cerebellum; small hind brain" (responsible for balance and coordination)?',
+                options: ['cerebr/o', 'cerebell/o', 'cephal/o', 'crani/o'],
+                answer: 1,
+                rationale: 'Standard 3 distinguishes cerebell/o (cerebellum; small hind brain) from cerebr/o (brain, cerebrum; large outer brain).'
+            },
+            {
+                q: 'A neurologist orders an "EEG" for a patient suspected of having "narcolepsy". What is an EEG, and what does narcolepsy mean?',
+                options: [
+                    'Electroencephalogram; sleep seizures',
+                    'Electromyogram; irrational fear of sleep',
+                    'Electrocardiogram; memory impairment',
+                    'Encephalotomy; inflammation of the brain'
+                ],
+                answer: 0,
+                rationale: 'EEG = electroencephalogram (Standard 1); narcolepsy = sleep seizures (Standard 5).'
+            },
+            {
+                q: 'Which glial cell has a star-shaped appearance ("star (shaped) cell")?',
+                options: ['Dendrite', 'Astrocyte', 'Neuron', 'Myelin'],
+                answer: 1,
+                rationale: 'astr/o (star shaped) + -cyte (cell) = astrocyte: star (shaped) cell.'
+            },
+            {
+                q: 'After traumatic brain injury, nurses closely monitor "ICP" and "LOC". What do these abbreviations stand for?',
+                options: [
+                    'Intracranial pressure and level of consciousness (or loss of consciousness)',
+                    'Internal cerebral pulse and loss of coordination',
+                    'Intraspinal cerebrospinal puncture and local cranial output',
+                    'Ischemic cerebral paralysis and lumbar opening count'
+                ],
+                answer: 0,
+                rationale: 'Standard 1 defines ICP as intracranial pressure and LOC as level of consciousness or loss of consciousness.'
+            },
+            {
+                q: 'Which term describes "a fatty white substance that surrounds the axon of some nerve cells" to speed up electrical impulses?',
+                options: ['Meninges', 'Myelin', 'Neuroglia', 'Dendrite'],
+                answer: 1,
+                rationale: 'Standard 5 defines myelin as a fatty white substance that surrounds the axon of some nerve cells.'
+            },
+            {
+                q: 'Which combining form has TWO meanings in Strand 7: "diaphragm; mind"?',
+                options: ['psych/o', 'phren/o', 'schiz/o', 'poli/o'],
+                answer: 1,
+                rationale: 'Standard 3 defines phren/o as diaphragm; mind.'
+            },
+            {
+                q: 'A patient with trigeminal "neuralgia" experiences severe stabbing pain along a cranial nerve. Which suffix means "pain"?',
+                options: ['-glia', '-algia', '-lepsy', '-mania'],
+                answer: 1,
+                rationale: 'neur/o (nerve) + -algia (pain) = neuralgia (nerve pain).'
+            },
+            {
+                q: 'Which congenital neural tube defect involves "herniation or protrusion of the meninges"?',
+                options: ['Meningitis', 'Meningocele', 'Microencephaly', 'Glioma'],
+                answer: 1,
+                rationale: 'mening/o (meninges) + -cele (herniation, pouch) = meningocele (herniation or protrusion of the meninges).'
+            },
+            {
+                q: 'What does the combining form "dur/o" mean (as in dura mater, the outermost meningeal layer)?',
+                options: ['Gray', 'Tough', 'Tree', 'Split'],
+                answer: 1,
+                rationale: 'Standard 3 defines dur/o as tough.'
+            },
+            {
+                q: 'A herniated lumbar disc compresses a spinal nerve root, resulting in "radiculopathy". How is radiculopathy defined in Standard 5?',
+                options: [
+                    'Nerve root disease',
+                    'Inflammation of the spinal cord',
+                    'Paralysis of the legs and lower body',
+                    'Branch of a neuron'
+                ],
+                answer: 0,
+                rationale: 'Standard 5 defines radiculopathy as nerve root disease.'
+            },
+            {
+                q: 'Which abbreviation stands for "aspirin" (frequently administered in suspected ischemic CVA/TIA protocols)?',
+                options: ['HA', 'ASA', 'CNS', 'LP'],
+                answer: 1,
+                rationale: 'Standard 1 defines ASA as aspirin.'
+            },
+            {
+                q: 'Which term means "tumor of the glial tissue of the nervous system"?',
+                options: ['Neuroglia', 'Glioma', 'Dementia', 'Encephalitis'],
+                answer: 1,
+                rationale: 'Standard 5 defines glioma as tumor of the glial tissue of the nervous system.'
+            }
+        ];
+
+        let userQuizAnswers = {};
+        let quizGraded = false;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-questions-container');
+            container.innerHTML = quizQuestions.map((item, qIdx) => {
+                return `
+                <div class="quiz-item" id="quiz-q-block-${qIdx}">
+                    <div class="quiz-q-header">
+                        <span class="q-num-badge">${qIdx + 1}</span>
+                        <div style="flex: 1;">
+                            <p style="font-weight: 700; color: var(--navy-900); font-size: 0.96rem;">${item.q}</p>
+                            <div class="quiz-options">
+                                ${item.options.map((opt, optIdx) => {
+                                    const isSelected = userQuizAnswers[qIdx] === optIdx;
+                                    let btnClass = 'quiz-opt-btn';
+                                    let letterContent = String.fromCharCode(65 + optIdx);
+
+                                    if (quizGraded) {
+                                        if (optIdx === item.answer) {
+                                            btnClass += ' opt-correct';
+                                            letterContent = '✓';
+                                        } else if (isSelected && optIdx !== item.answer) {
+                                            btnClass += ' opt-wrong';
+                                            letterContent = '✕';
+                                        } else {
+                                            btnClass += ' opt-dim';
+                                        }
+                                    } else if (isSelected) {
+                                        btnClass += ' opt-selected';
+                                    }
+
+                                    return `
+                                    <button onclick="selectQuizOption(${qIdx}, ${optIdx})" ${quizGraded ? 'disabled' : ''} class="${btnClass}">
+                                        <span class="opt-letter">${letterContent}</span>
+                                        <span>${opt}</span>
+                                    </button>`;
+                                }).join('')}
+                            </div>
+                            ${quizGraded ? `
+                                <div class="rationale-box">
+                                    <strong style="color: var(--navy-900);">Rationale:</strong> ${item.rationale}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            const answeredCount = Object.keys(userQuizAnswers).length;
+            document.getElementById('quiz-answered-status').textContent = `${answeredCount} of ${quizQuestions.length} questions answered`;
+        }
+
+        function selectQuizOption(qIdx, optIdx) {
+            if (quizGraded) return;
+            userQuizAnswers[qIdx] = optIdx;
+            renderQuiz();
+        }
+
+        function gradeQuiz() {
+            const answeredCount = Object.keys(userQuizAnswers).length;
+            if (answeredCount < quizQuestions.length) {
+                const banner = document.getElementById('quiz-results-banner');
+                banner.className = 'feedback-alert alert-warn';
+                banner.innerHTML = `<strong>⚠ Incomplete Exam:</strong> Please answer all ${quizQuestions.length} questions before submitting (${quizQuestions.length - answeredCount} remaining).`;
+                banner.classList.remove('hidden');
+                banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            quizGraded = true;
+            let correctCount = 0;
+            quizQuestions.forEach((q, idx) => {
+                if (userQuizAnswers[idx] === q.answer) correctCount++;
+            });
+
+            const pct = Math.round((correctCount / quizQuestions.length) * 100);
+            const passed = pct >= 74;
+
+            const banner = document.getElementById('quiz-results-banner');
+            banner.className = passed ? 'feedback-alert alert-success' : 'feedback-alert alert-warn';
+            banner.style.borderWidth = '2px';
+
+            banner.innerHTML = `
+                <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+                    <div>
+                        <span class="cte-badge" style="background: ${passed ? 'var(--emerald-600)' : 'var(--amber-600)'};">
+                            ${passed ? 'Passing Score Achieved (≥74%)' : 'Below State Cut Score (74%)'}
+                        </span>
+                        <h3 style="font-size: 1.4rem; font-weight: 800; margin-top: 0.45rem;">You scored ${correctCount} / ${quizQuestions.length} (${pct}%)</h3>
+                        <p style="font-size: 0.875rem; margin-top: 0.25rem;">${passed ? 'Great job! You are ready for Strand 7 questions on Utah CTE Test #704.' : 'Review the rationales below and revisit the Flashcards & Word-Building Lab to boost your score above 74%.'}</p>
+                    </div>
+                    <button onclick="resetQuiz()" class="btn btn-navy">Retake Quiz</button>
+                </div>
+            `;
+            banner.classList.remove('hidden');
+            document.getElementById('submit-quiz-btn').classList.add('hidden');
+            renderQuiz();
+            banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() {
+            userQuizAnswers = {};
+            quizGraded = false;
+            document.getElementById('quiz-results-banner').classList.add('hidden');
+            document.getElementById('submit-quiz-btn').classList.remove('hidden');
+            renderQuiz();
+        }
+
+        // =========================================================================
+        // 8. INITIALIZE APPLICATION ON LOAD
+        // =========================================================================
+        window.onload = function () {
+            updateMasteryUI();
+            updateBestTimeUI();
+            renderStudyGuide();
+            initFlashcardDeck();
+            loadBuilderChallenge();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
